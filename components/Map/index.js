@@ -4,7 +4,9 @@ import { getSociety, getStatesUnderSociety } from "../Utils";
 import { Autocomplete, TextField } from "@mui/material";
 import { useState } from "react";
 import { flushSync } from "react-dom";
+import { useData } from "../DataProvider";
 export default function IndiaMap(){
+  const data = useData();
 const [sector , setSector] = useState("saharayn universal multipurose society limited");
 const handleChange = (value)=> {
   flushSync (()=>setSector(value ?? sector));
@@ -20,7 +22,7 @@ const handleChange = (value)=> {
 
 <Autocomplete
 disablePortal
-options={getSociety()}
+options={getSociety(data)}
 sx={{ width: 300 }}
 onChange={(_,value)=>{handleChange(value);}}
 renderInput={(params) => <TextField {...params} label="Select Sector"  />}
@@ -30,7 +32,7 @@ renderInput={(params) => <TextField {...params} label="Select Sector"  />}
     
        <DatamapsIndia
          style={{ postion: "relative", left: "25%" }}
-         regionData={getStatesUnderSociety(sector)}
+         regionData={getStatesUnderSociety(sector,data)}
          hoverComponent={({ value }) => {
            return (
              <div>

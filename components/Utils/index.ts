@@ -1,9 +1,7 @@
 
-import { useData } from "../DataProvider";
+import { TYPE, useData } from "../DataProvider";
 
-export const getCountWithKey = (chartOption:string)  => {
-    
-        const data = useData();
+export const getCountWithKey = (chartOption:string,data:TYPE[])  => {
       const map = new Map();
       data.forEach(key => {
         let state ; 
@@ -28,8 +26,7 @@ export const getCountWithKey = (chartOption:string)  => {
     }
 
 
-export const  getStatesUnderSociety = (society:string) => {
-      const data = useData();
+export const  getStatesUnderSociety = (society:string,data:TYPE[]) => {
       let states :string = "" ;
         data.forEach((value)=>{
         if(value["Name of Society"] === society)
@@ -48,8 +45,7 @@ export const  getStatesUnderSociety = (society:string) => {
 
 } 
 
-export const getSociety = () => {
-  const data =  useData();
+export const getSociety = (data:TYPE[]) => {
   return data.map((datum)=>{
     return datum["Name of Society"];
   })

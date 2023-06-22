@@ -10,10 +10,11 @@ import PieChart, {
 } from 'devextreme-react/pie-chart';
 import { getCountWithKey } from '../Utils';
 import { LegendClickEvent, PointClickEvent } from 'devextreme/viz/pie_chart';
+import { useData } from '../DataProvider';
 
 export default function App ()  {
-    
-        const areas = getCountWithKey("Sector Type");
+        const data = useData();
+        const areas = getCountWithKey("Sector Type",data);
         function pointClickHandler(e:PointClickEvent) {
             toggleVisibility(e.target);
           }

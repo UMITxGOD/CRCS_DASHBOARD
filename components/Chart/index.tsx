@@ -8,8 +8,10 @@ import Chart, {
 import { Autocomplete, TextField } from '@mui/material';
 import { flushSync } from 'react-dom';
 import { getCountWithKey } from '../Utils';
+import { useData } from '../DataProvider';
 
 export default function ChartUI () {
+  const data = useData();
   const chartOptions = [
     'State-wise',
     'Year-wise',
@@ -18,7 +20,7 @@ export default function ChartUI () {
   const handleChange = (value:string|null)=> {
     flushSync (()=>setChart(value ?? chat));
   }
-  let dataSource  = getCountWithKey(chat)
+  let dataSource  = getCountWithKey(chat,data)
   let chartName : string ;
   let chartColor :string ;
 if(chat === 'State-wise'){

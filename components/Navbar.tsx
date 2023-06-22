@@ -4,6 +4,7 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import FullscreenExitOutlinedIcon from '@mui/icons-material/FullscreenExitOutlined';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 export default function Navbar(){
     const [isFullScreen ,setIsFullScreen] = useState(false);
     const searchInput = useRef<HTMLInputElement>(null);
@@ -46,7 +47,9 @@ export default function Navbar(){
                     </div>
                     <Link href={'https://github.com/UMITxGOD'} target='_' rel='noopener noreferrer'>
                     <div className="item flex items-center m-5">
-                        <img
+                        <Image
+                        width={50}
+                        height={50}
                         className='rounded-[50%] w-8 h-8'
                         src={'https://avatars.githubusercontent.com/u/86766978?v=4'}
                         alt='Profile-Pic'
