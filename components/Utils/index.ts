@@ -1,5 +1,5 @@
 
-import { TYPE, useData } from "../DataProvider";
+import { TYPE} from "../DataProvider";
 
 export const getCountWithKey = (chartOption:string,data:TYPE[])  => {
       const map = new Map();
